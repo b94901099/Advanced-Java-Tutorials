@@ -4,8 +4,12 @@
  * The overall run time complexity should be O(log (m+n)).
  * 
  * 同時也是另一題: "找到兩個 sorted array 中的第 k 個數"
+ * 
+ * http://decomplexify.blogspot.com/2014/03/algorithm-median-of-2-sorted-arrays.html
  */
-package Array;
+package BinarySearch;
+
+import Array.*;
 
 public class MedianofTwoSortedArrays {
 

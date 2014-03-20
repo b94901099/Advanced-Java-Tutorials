@@ -39,5 +39,7 @@ public class Combinations {
     }
 
     public static void main(String[] args) {
+        Combinations c = new Combinations();
+        System.out.println(c.combine(4, 2));
     }
 }
