@@ -5,7 +5,12 @@
  * 
  * 同時也是另一題: "找到兩個 sorted array 中的第 k 個數"
  * 
+ * solution II:
  * http://decomplexify.blogspot.com/2014/03/algorithm-median-of-2-sorted-arrays.html
+ * 
+ * solution III
+ * http://fisherlei.blogspot.com/2012/12/leetcode-median-of-two-sorted-arrays.html
+ * 
  */
 package BinarySearch;
 

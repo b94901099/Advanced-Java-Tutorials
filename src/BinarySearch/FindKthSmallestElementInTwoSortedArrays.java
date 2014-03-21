@@ -11,26 +11,18 @@
  * 線性搜索直到兩個 index 加起來為 k
  * 
  * 解法二: O(log(m + n))
- * 普遍來說有以下兩種情況:
- * b[j] < a[i] < b[j + 1]: a[i] 是 a 中第 i 大, 而且 比 b 裡面 j 個element 大,
- * a[i] < b[j] < a[i + 1]: 反之亦然
- * 因為 k 從 1 開始算, 所以a,b index 都得加 1, 得到我們的目標: i + j + 2 = k
- * 就可以得到全部第 k 大的 element, 在達到目標時分以下兩種情況:
- * If b[j] < a[i] < b[j + 1], then a[i] must be the k-th smallest,
- * else if a[i] < b[j] < a[i + 1], then b[j] must be the k-th smallest.
- * 另外, 如何移動 i, j? 哪部分要捨棄? a[i], b[j] 本身如何考慮?
- * 在 a[i] < b[j + 1] 為真, 但是 b[j] < a[i] 不為真時, a[i] < b[j] < [j + 1]
- * 當  i + j + 2 < k 時, 從 a[i] 往前都是可以捨棄的
- * 當  i + j + 2 > k 時, 從 b[j + 1] 往後都是可以捨棄的
- * 同樣的, 另一條件也有類似特性
- * 
+ * http://blog.csdn.net/lllcfr/article/details/18092663
  * 
  */
 package BinarySearch;
 
-public class FindKthLargestElementInTwoSortedArrays {
+public class FindKthSmallestElementInTwoSortedArrays {
+    
+    public int binarySearchK(int[] a, int[] b, int k) {
+        
+    }
 
-    public int linearSearch(int[] a, int[] b, int k) {
+    public int linearSearchK(int[] a, int[] b, int k) {
         int i = 0, j = 0;
         while (i < a.length && j < b.length) {
             if (i + j + 2 == k) { // k 從 1 開始, i/j 從 0
@@ -57,7 +49,7 @@ public class FindKthLargestElementInTwoSortedArrays {
     public static void main(String[] args) {
         int a[] = {2, 3, 7, 12, 27, 81, 91};
         int b[] = {1, 25, 32, 74, 89};
-        FindKthLargestElementInTwoSortedArrays f = new FindKthLargestElementInTwoSortedArrays();
-        System.out.println(f.linearSearch(a, b, 6));
+        FindKthSmallestElementInTwoSortedArrays f = new FindKthSmallestElementInTwoSortedArrays();
+        System.out.println(f.linearSearchK(a, b, 6));
     }
 }
