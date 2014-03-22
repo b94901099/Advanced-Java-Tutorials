@@ -1,4 +1,5 @@
-package Array;
+package DynamicProgramming;
+
 /*
  * 我们这么想，当我们从头到尾遍历这个数组的时候，对于一个数组里的数字，它有几种选择呢？
  * 它只有两种选择： 1. 加入之前的SubArray， 2. 自己另起一个SubArray
