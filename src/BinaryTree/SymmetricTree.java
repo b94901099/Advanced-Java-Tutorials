@@ -21,20 +21,19 @@ package BinaryTree;
 import java.util.*;
 
 public class SymmetricTree {
-    
+
     //这题难的是iterative的解法，基本做法是BFS，一层一层看是否对称，然后用两个queue来存储结点。
-    
     public boolean isSymmetricIteration(TreeNode root) {
         if (root == null) {
             return true;
         }
         LinkedList<TreeNode> l = new LinkedList<TreeNode>(),
-        r = new LinkedList<TreeNode>();
+                r = new LinkedList<TreeNode>();
         l.add(root.left);
         r.add(root.right);
         while (!l.isEmpty() && !r.isEmpty()) {
-            TreeNode temp1 = l.poll(),
-                    temp2 = r.poll();
+            TreeNode temp1 = l.poll();
+            TreeNode temp2 = r.poll();
             if (temp1 == null && temp2 != null || temp1 != null && temp2 == null) {
                 return false;
             }

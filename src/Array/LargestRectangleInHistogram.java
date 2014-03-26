@@ -49,6 +49,8 @@ public class LargestRectangleInHistogram {
 
         return max;
     }
+    
+    
 
     public int largestRectangleArea2(int[] height) {
         if (height == null || height.length == 0) {
