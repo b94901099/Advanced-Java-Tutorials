@@ -37,9 +37,41 @@ public class TrappingRainWater {
         return res;
     }
 
+    public int trap2(int[] A) {
+        if (A == null || A.length == 0) {
+            return 0;
+        }
+        //左邊最高
+        int[] lh = new int[A.length];
+        int max = 0;
+        for (int i = 0; i < A.length; i++) {
+            lh[i] = max;
+            max = Math.max(max, A[i]);
+        }
+        //右邊最高
+        int[] rh = new int[A.length];
+        max = 0;
+        for (int i = A.length - 1; i >= 0; i--) {
+            rh[i] = max;
+            max = Math.max(max, A[i]);
+        }
+
+        int result = 0;
+        //如果左右兩邊的低邊高於自己, 代表能儲水, 所儲的水即為低邊跟自己的差值
+        for (int i = 1; i < A.length - 1; i++) {
+            int tmp = Math.min(lh[i], rh[i]);
+            if (tmp >= A[i]) {
+                result = result + tmp - A[i];
+            }
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         TrappingRainWater t = new TrappingRainWater();
         int[] A = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
         System.out.println(t.trap(A));
+        System.out.println(t.trap2(A));
     }
 }
