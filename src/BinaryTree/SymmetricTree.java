@@ -27,10 +27,10 @@ public class SymmetricTree {
         if (root == null) {
             return true;
         }
-        LinkedList<TreeNode> left = new LinkedList<TreeNode>();
-        LinkedList<TreeNode> right = new LinkedList<TreeNode>();
-        left.add(root.left);
-        right.add(root.right);
+        Queue<TreeNode> left = new LinkedList<TreeNode>();
+        Queue<TreeNode> right = new LinkedList<TreeNode>();
+        left.offer(root.left);
+        right.offer(root.right);
         while (!left.isEmpty() && !right.isEmpty()) {
             TreeNode temp1 = left.poll();
             TreeNode temp2 = right.poll();
@@ -41,10 +41,10 @@ public class SymmetricTree {
                 if (temp1.val != temp2.val) {
                     return false;
                 }
-                left.add(temp1.left);
-                left.add(temp1.right);
-                right.add(temp2.right);
-                right.add(temp2.left);
+                left.offer(temp1.left);
+                left.offer(temp1.right);
+                right.offer(temp2.right);
+                right.offer(temp2.left);
             }
         }
         return true;
