@@ -37,7 +37,7 @@ public class SymmetricTree {
             if (temp1 == null && temp2 != null || temp1 != null && temp2 == null) {
                 return false;
             }
-            if (temp1 != null) {
+            if (temp1 != null && temp2 != null) {
                 if (temp1.val != temp2.val) {
                     return false;
                 }
