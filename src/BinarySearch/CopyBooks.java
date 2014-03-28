@@ -18,18 +18,17 @@
  */
 package BinarySearch;
 
-import Implement.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class CopyBooks {
-    
-    public int[][] dispatch(int m, int k, int mp[]){
+
+    public int[][] dispatch(int m, int k, int mp[]) {
         int[][] disp = new int[k][2];
-            return disp;
+        return disp;
     }
-    
+
     public static void main(String[] args) {
         Queue<String> q = (Queue<String>) new LinkedList<String>();
-        
+
     }
 }

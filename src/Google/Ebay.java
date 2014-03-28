@@ -127,8 +127,8 @@ public class Ebay {
         Ebay e = new Ebay();
         ArrayList<String> data = new ArrayList<String>();
         try {
-//            File file = new File(args[0]);
-            BufferedReader in = new BufferedReader(new FileReader("D:\\CMU_DSA\\CCLeetcode\\ebaytestdata.txt"));
+            File file = new File(args[0]);
+            BufferedReader in = new BufferedReader(new FileReader(file));
             String line;
             while ((line = in.readLine()) != null) {
                 data.add(line);

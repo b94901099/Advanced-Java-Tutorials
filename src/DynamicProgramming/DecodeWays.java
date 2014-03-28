@@ -50,6 +50,8 @@ public class DecodeWays {
     private boolean isValid(char c) {
         return c - '0' > 0;
     }
+    
+    
     // DFS sol, time exceeds
     int count;
 

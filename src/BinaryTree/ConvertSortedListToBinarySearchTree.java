@@ -2,13 +2,14 @@ package BinaryTree;
 
 public class ConvertSortedListToBinarySearchTree {
 
+    ListNode current = null;
+
     public TreeNode sortedListToBST(ListNode head) {
         int size;
         current = head;
         size = getListLength(head);
         return sortedListToBSTHelper(size);
     }
-    ListNode current = null;
 
     private TreeNode sortedListToBSTHelper(int size) {
         if (size <= 0) {
