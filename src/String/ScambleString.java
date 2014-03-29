@@ -46,7 +46,9 @@ Given two strings s1 and s2 of the same length, determine if s2 is a scrambled s
  * 那么要么s11和s21是scramble的并且s12和s22是scramble的；
  * 要么s11和s22是scramble的并且s12和s21是scramble的。
  */
-package BinaryTree;
+package String;
+
+import BinaryTree.*;
 
 public class ScambleString {
 

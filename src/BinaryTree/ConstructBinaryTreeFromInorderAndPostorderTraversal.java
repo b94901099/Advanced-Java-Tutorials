@@ -6,6 +6,13 @@ package BinaryTree;
 
 public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
 
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        if (inorder.length != postorder.length) {
+            return null;
+        }
+        return myBuildTree(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
+    }
+
     private int findPosition(int[] arr, int start, int end, int key) {
         int i;
         for (i = start; i <= end; i++) {
@@ -25,19 +32,12 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
         TreeNode root = new TreeNode(postorder[postend]);
         int position = findPosition(inorder, instart, inend, postorder[postend]);
         int leftnum = position - instart;
-        
+
         root.left = myBuildTree(inorder, instart, position - 1,
                 postorder, poststart, poststart + leftnum - 1);
         root.right = myBuildTree(inorder, position + 1, inend,
                 postorder, poststart + leftnum, postend - 1);
         return root;
-    }
-
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
-        if (inorder.length != postorder.length) {
-            return null;
-        }
-        return myBuildTree(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
     }
 
     public static void main(String[] args) {

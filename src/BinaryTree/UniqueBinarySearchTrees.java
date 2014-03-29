@@ -81,6 +81,7 @@ public class UniqueBinarySearchTrees {
         UniqueBinarySearchTrees u = new UniqueBinarySearchTrees();
         for (int i = 1; i < 6; i++) {
             System.out.println(i + ": " + u.numTrees(i));
+            System.out.println(i + ": " + u.numTreesDFS(i));
         }
     }
 }

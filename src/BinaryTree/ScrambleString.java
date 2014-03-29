@@ -84,10 +84,12 @@ public class ScrambleString {
         String s2 = "rgeat";
         String s3 = "rgtae";
         String s4 = "aegrt";
+        String s5 = "egatr";
+        
         ScrambleString ss = new ScrambleString();
         System.out.println(ss.isScramble(s1, s2));
         System.out.println(ss.isScramble(s1, s3));
         System.out.println(ss.isScramble(s1, s4));
-        
+        System.out.println(ss.isScramble(s1, s5));
     }
 }

@@ -8,6 +8,42 @@ import java.util.*;
 
 public class AddBinary {
 
+    public String addBinary2(String a, String b) {
+        if (a.length() < 1 && b.length() < 1) {
+            return "";
+        }
+        int p = a.length() - 1;
+        int q = b.length() - 1;
+        int carry = 0;
+        StringBuilder sb = new StringBuilder();
+
+        while (p >= 0 && q >= 0) {
+            int ip = Integer.parseInt("" + a.charAt(p--));
+            int iq = Integer.parseInt("" + b.charAt(q--));
+            int tmp = ip + iq + carry;
+            carry = tmp / 2;
+            sb.append(tmp % 2);
+        }
+
+        while (p >= 0) {
+            int ip = Integer.parseInt("" + a.charAt(p--));
+            int tmp = ip + carry;
+            carry = tmp / 2;
+            sb.append(tmp % 2);
+        }
+        while (q >= 0) {
+            int iq = Integer.parseInt("" + b.charAt(q--));
+            int tmp = iq + carry;
+            carry = tmp / 2;
+            sb.append(tmp % 2);
+        }
+        while (carry > 0) {
+            sb.append(carry % 2);
+            carry = carry / 2;
+        }
+        return sb.reverse().toString();
+    }
+
     public static String addBinary(String a, String b) {
         if (a.length() < 1 && b.length() < 1) {
             return "";
@@ -47,6 +83,8 @@ public class AddBinary {
     }
 
     public static void main(String[] args) {
+        AddBinary a = new AddBinary();
+        System.out.println(a.addBinary2("0", "0"));
         System.out.println(addBinary("0", "0"));
     }
 }

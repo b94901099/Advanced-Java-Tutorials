@@ -1,9 +1,10 @@
 package Google;
 
+
 import java.util.*;
 import java.io.*;
 
-public class Ebay {
+public class Main {
 
     private float maxSS = 0;
 
@@ -31,18 +32,11 @@ public class Ebay {
         // scoreTable record the score of each product assigning to each customer
         float[][] scoreTable = new float[products.length][customers.length];
 
-        System.out.println("Score Table");
         for (int i = 0; i < products.length; i++) {
             for (int j = 0; j < customers.length; j++) {
                 scoreTable[i][j] = ssScore(products[i], customers[j]);
             }
-            System.out.println(Arrays.toString(scoreTable[i]));
         }
-
-        Stopwatch timer4 = new Stopwatch();
-
-//        boolean[] visitedCustomers = new boolean[customers.length];
-//        scoreHelper(scoreTable, visitedCustomers, 0, 0);
 
         // find max score among the all table
 
@@ -52,12 +46,10 @@ public class Ebay {
                 max = Math.max(max, scoreTable[i][j]);
             }
         }
-        System.out.println("max score = " + max);
 
         float[][] lossProfitTable;
         boolean startFromRow = false;
-        System.out.println("row = " + scoreTable.length);
-        System.out.println("col = " + scoreTable[0].length);
+      
         if (scoreTable.length >= scoreTable[0].length) {
             lossProfitTable = new float[scoreTable.length][scoreTable.length];
             startFromRow = true;
@@ -65,8 +57,7 @@ public class Ebay {
             lossProfitTable = new float[scoreTable[0].length][scoreTable[0].length];
             startFromRow = false;
         }
-        System.out.println("start from row = " + startFromRow);
-        System.out.println("Lost Profit");
+       
         for (int i = 0; i < lossProfitTable.length; i++) {
             for (int j = 0; j < lossProfitTable.length; j++) {
                 if (i < scoreTable.length && j < scoreTable[0].length) {
@@ -75,7 +66,6 @@ public class Ebay {
                     lossProfitTable[i][j] = max;
                 }
             }
-            System.out.println(Arrays.toString(lossProfitTable[i]));
         }
 
         HungarianAlgorithm h = new HungarianAlgorithm();
@@ -88,28 +78,10 @@ public class Ebay {
                 maxSS = maxSS + scoreTable[row][col];
             }
         }
-        System.out.println("Time for dfs " + timer4.elapsedTime()
-                + " millisec");
 
         return maxSS;
     }
-    
-    //dfs 會超時
-    // The method use dfs to search for the maximum ss score and update it to maxSS
-    private void scoreHelper(float[][] scoreTable, boolean[] visitedCustomers, int productPos, float tmpSS) {
-        if (productPos == scoreTable.length) {
-            maxSS = Math.max(maxSS, tmpSS);
-            return;
-        }
 
-        for (int i = 0; i < scoreTable[0].length; i++) {
-            if (!visitedCustomers[i]) {
-                visitedCustomers[i] = true;
-                scoreHelper(scoreTable, visitedCustomers, productPos + 1, tmpSS + scoreTable[productPos][i]);
-                visitedCustomers[i] = false;
-            }
-        }
-    }
 
     // Return the ss score based on the assigned product and customer
     private float ssScore(String product, String name) {
@@ -174,10 +146,10 @@ public class Ebay {
     }
 
     public static void main(String[] args) {
-        Ebay e = new Ebay();
+        Main e = new Main();
         ArrayList<String> data = new ArrayList<String>();
         try {
-            //File file = new File(args[0]);
+//            File file = new File(args[0]);
             String file = "D:\\CMU_DSA\\CCLeetcode\\ebaytestdata.txt";
             BufferedReader in = new BufferedReader(new FileReader(file));
             String line;
@@ -196,3 +168,4 @@ public class Ebay {
         }
     }
 }
+
