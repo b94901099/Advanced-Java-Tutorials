@@ -1,7 +1,12 @@
+/*
+ * Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+ * For example,
+ * [1,1,2] have the following unique permutations:
+ * [1,1,2], [1,2,1], and [2,1,1].
+ */
 package DeepFirstSearch;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 // http://blog.csdn.net/u011095253/article/details/9158397
 // 用 while : 

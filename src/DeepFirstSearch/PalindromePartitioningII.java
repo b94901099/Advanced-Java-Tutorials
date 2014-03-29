@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class PalindromePartitioningII {
 
     /*这个题很多人都分析过了，其实是两个合在一起的DP，其中一个DP绘制字符子串Palindrome矩阵，我们已经解决了。
-     * 那么剩下的问题就是怎么求最小切数了我们从字符串的尾巴往前推，我们来创造一个dp数组，
+     * 那么剩下的问题就是怎么求最小切数了  我们从字符串的尾巴往前推，我们来创造一个dp数组，
      * 叫cut[]，在数组里cut[i] 表示从字符串第i位开始到字符串结尾需要切的刀数（包括该i位左边的一刀）
      * 假设，不幸的是，从第i位开始到后面都不存在Palindrome，那么需要的刀数就为 len - i (包括左边的一刀)，即每个字符间都要切一刀
      * 那么我们从第i位开始，往后找，设计一个循环一直到字符串结尾，看是否存在Palindrome
@@ -119,5 +119,8 @@ public class PalindromePartitioningII {
     }
 
     public static void main(String[] args) {
+        PalindromePartitioningII p = new PalindromePartitioningII();
+        System.out.println(p.minCut3("aab"));
+        System.out.println(p.minCut3("aabaa"));
     }
 }

@@ -49,16 +49,16 @@ public class PalindromePartitioning {
 
         for (int i = 0; i < s.length(); i++) {
             //substring 為偶數
-            int l = i - 1;
-            int r = i;
-            while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
-                table[l--][r++] = true;
+            int left = i - 1;
+            int right = i;
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                table[left--][right++] = true;
             }
             //substring為奇數
-            l = i - 1;
-            r = i + 1;
-            while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
-                table[l--][r++] = true;
+            left = i - 1;
+            right = i + 1;
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                table[left--][right++] = true;
             }
         }
         return table;
@@ -108,7 +108,7 @@ public class PalindromePartitioning {
 
     public static void main(String[] args) {
         PalindromePartitioning p = new PalindromePartitioning();
-        ArrayList<ArrayList<String>> result = p.partitionDPnDFS("aab");
+        ArrayList<ArrayList<String>> result = p.partitionDPnDFS("aabaa");
         for (ArrayList<String> list : result) {
             System.out.print("{");
             for (String in : list) {

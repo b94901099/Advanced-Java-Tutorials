@@ -1,3 +1,16 @@
+/*Given a set of candidate numbers (C) and a target number (T),
+ * find all unique combinations in C where the candidate numbers sums to T.
+ * The same repeated number may be chosen from C unlimited number of times.
+ * Note:
+ * All numbers (including target) will be positive integers.
+ * Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ≤ a2 ≤ … ≤ ak).
+ * The solution set must not contain duplicate combinations.
+ * For example, given candidate set 2,3,6,7 and target 7, 
+ * A solution set is: 
+ * [7] 
+ * [2, 2, 3] 
+ */
+
 package DeepFirstSearch;
 /*很像传统的硬币问题，我们同样运用Subset和Permutation的思路，只需要考虑两个问题：
  * 1. 什么时候返回？
@@ -34,6 +47,7 @@ public class CombinationSum {
         }
         if (target == 0) {
             result.add(new ArrayList(list));
+            return;
         }
         for (int i = pos; i < candidates.length; i++) {
             list.add(candidates[i]);
