@@ -36,6 +36,6 @@ public class DivideTwoIntegers {
 
     public static void main(String[] args) {
         DivideTwoIntegers d = new DivideTwoIntegers();
-        System.out.println(d.divide(100, 5));
+        System.out.println(d.divide(100, 2));
     }
 }

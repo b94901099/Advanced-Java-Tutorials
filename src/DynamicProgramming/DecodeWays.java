@@ -28,7 +28,7 @@ public class DecodeWays {
 
         int[] count = new int[s.length() + 1];
         count[0] = 1;
-        
+
         if (isValid(s.charAt(0))) {
             count[1] = 1;
         } else {
@@ -39,18 +39,18 @@ public class DecodeWays {
             if (isValid(s.charAt(i - 1))) {
                 count[i] = count[i - 1];
             }
-            if (isValid(s.substring(i - 2, i))){
+            if (isValid(s.substring(i - 2, i))) {
                 count[i] = count[i] + count[i - 2];
             }
         }
-        
+
         return count[s.length()];
     }
 
     private boolean isValid(char c) {
         return c - '0' > 0;
     }
-    
+
     
     // DFS sol, time exceeds
     int count;
@@ -88,6 +88,6 @@ public class DecodeWays {
     public static void main(String[] args) {
         DecodeWays d = new DecodeWays();
         System.out.println(d.numDecodingsDFS("15234"));
-        System.out.println(d.numDecodingsDP("15234"));
+        System.out.println(d.numDecodingsDP("1212"));
     }
 }

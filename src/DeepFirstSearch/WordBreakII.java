@@ -13,6 +13,39 @@ import java.util.*;
 
 public class WordBreakII {
 
+    public ArrayList<String> wordBreak2(String s, Set<String> dict) {
+        ArrayList<String> result = new ArrayList<String>();
+        if (s == null || s.length() == 0 || dict == null || dict.size() == 0) {
+            return result;
+        }
+
+        boolean[][] table = new boolean[s.length()][s.length()];
+
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i; j < s.length(); j++) {
+                if (dict.contains(s.substring(i, j + 1))) {
+                    table[i][j] = true;
+                }
+            }
+        }
+
+        wordBreak2Helper(s, "", 0, table, result);
+        return result;
+    }
+
+    private void wordBreak2Helper(String s, String str, int pos, boolean[][] table, ArrayList<String> result) {
+        if (pos == s.length()) {
+            result.add(str.substring(0,str.length() - 1));
+            return;
+        }
+        for (int i = pos; i < s.length(); i++) {
+            if (table[pos][i]) {
+                wordBreak2Helper(s, str + s.substring(pos, i + 1) + " ", i + 1, table, result);
+            }
+        }
+    }
+
+    // accepted solution
     private void dfs(String s, boolean seg[][], int start,
             ArrayList<String> ret, StringBuilder sb, Set<String> dict) {
         // exit  
@@ -73,7 +106,7 @@ public class WordBreakII {
     }
 
     //純 DFS 會超時
-    public ArrayList<String> wordBreak2(String s, Set<String> dict) {
+    public ArrayList<String> wordBreak3(String s, Set<String> dict) {
         ArrayList<String> result = new ArrayList<String>();
         StringBuilder sb = new StringBuilder();
         wordBreakHelper(s, dict, result, sb);
@@ -113,6 +146,10 @@ public class WordBreakII {
             dict.add(word);
         }
         ArrayList<String> result = w.wordBreak(test, dict);
-        System.out.println(result);
+        System.out.println("result: " + result);
+
+        ArrayList<String> result2 = w.wordBreak2(test, dict);
+        System.out.println("result 2 : " + result2);
+
     }
 }
