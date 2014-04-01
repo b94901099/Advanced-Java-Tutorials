@@ -8,7 +8,6 @@
  */
 package Array;
 
-import EXTRA.*;
 import java.util.*;
 
 public class LongestConsecutiveSequence {

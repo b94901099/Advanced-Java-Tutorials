@@ -7,6 +7,48 @@ package DynamicProgramming;
 
 public class LongestPalindromicSubstring {
 
+    private static String longestPalindrome3(String s) {
+
+        if (s == null || s.length() < 2) {
+            return s;
+        }
+
+        boolean[][] table = new boolean[s.length()][s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            table[i][i] = true;
+        }
+
+        int maxLength = 1;
+        int start = 0;
+        int end = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            //substring 為偶數
+            int left = i - 1;
+            int right = i;
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                if (right - left + 1 > maxLength) {
+                    maxLength = right - left + 1;
+                    start = left;
+                    end = right;
+                }
+                table[left--][right++] = true;
+            }
+            //substring為奇數
+            left = i - 1;
+            right = i + 1;
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                if (right - left + 1 > maxLength) {
+                    maxLength = right - left + 1;
+                    start = left;
+                    end = right;
+                }
+                table[left--][right++] = true;
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
     public static String longestPalindrome2(String s) {
         if (s == null || s.length() < 2) {
             return s;
@@ -92,5 +134,6 @@ public class LongestPalindromicSubstring {
         String s = "bb";
         System.out.println(longestPalindrome(s));
         System.out.println(longestPalindrome2(s));
+        System.out.println(longestPalindrome3(s));
     }
 }

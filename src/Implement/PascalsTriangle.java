@@ -10,8 +10,9 @@
  * [1,4,6,4,1]
  * ]
  */
-package EXTRA;
+package Implement;
 
+import EXTRA.*;
 import java.util.*;
 
 public class PascalsTriangle {
