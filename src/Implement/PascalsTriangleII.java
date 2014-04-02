@@ -18,7 +18,7 @@ public class PascalsTriangleII {
             return result;
         }
         
-        Queue<Integer> queue = new LinkedList<Integer>();
+        Queue<Integer> queue = (Queue<Integer>) new LinkedList<Integer>();
         queue.offer(1);
         
         for (int i = 0; i < rowIndex; i++) {

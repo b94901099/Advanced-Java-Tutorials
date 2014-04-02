@@ -9,8 +9,8 @@ import java.util.Arrays;
 public class RemoveElement {
 
     int removeElement(int A[], int n, int elem) {
-        int num = 0, i;
-        for (i = 0; i < n; ++i) {
+        int num = 0;
+        for (int i = 0; i < n; ++i) {
             if (A[i] != elem) {
                 A[num++] = A[i];
             }

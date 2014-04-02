@@ -7,6 +7,37 @@ package String;
 
 public class LongestPalindromicSubstring {
 
+    public String longestPalindrome2(String s) {
+        if (s.length() < 2 || s == null) {
+            return s;
+        }
+
+        boolean[][] table = new boolean[s.length()][s.length()];
+
+        for (int i = 0; i < s.length(); i++) {
+            table[i][i] = true;
+        }
+
+        int maxLength = 1;
+        int start = 0;
+        int end = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            int left = i - 1;
+            int right = i;
+            while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+                if (s.charAt(left) == s.charAt(right)) {
+                    if (right - left + 1 > maxLength) {
+                        start = left;
+                        end = right;
+                    }
+                    table[left--][right++] = true;
+                }
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
     public String longestPalindrome(String s) {
         if (s.length() < 2 || s == null) {
             return s;
@@ -42,8 +73,9 @@ public class LongestPalindromicSubstring {
     }
 
     public static void main(String[] args) {
-        String s = "abcbasdsd";
+        String s = "abba";
         LongestPalindromicSubstring l = new LongestPalindromicSubstring();
         System.out.println(l.longestPalindrome(s));
+        System.out.println(l.longestPalindrome2(s));
     }
 }

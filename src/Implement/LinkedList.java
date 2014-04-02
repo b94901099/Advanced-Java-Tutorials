@@ -6,9 +6,9 @@ package Implement;
  */
 import java.util.*;
 
-public class LinkedList< AnyType> implements Iterable< AnyType> {
+public class LinkedList<AnyType> implements Iterable<AnyType> {
 
-    private Node< AnyType> head;
+    private Node<AnyType> head;
 
     /**
      * Constructs an empty list

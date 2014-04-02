@@ -1,17 +1,6 @@
-package Implement;
+package List;
 
 //  Definition for singly-linked list.
-class ListNode {
-
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-        next = null;
-    }
-}
-
 public class ReverseALinkedListII {
 
     public ListNode reverseBetween(ListNode head, int m, int n) {

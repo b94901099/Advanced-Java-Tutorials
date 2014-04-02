@@ -15,16 +15,17 @@ public class RotateImage {
             int start = i;
             int end = n - 1 - i;
             
-            for (int j = start; j <= end; j++) {
+            for (int j = start; j < end; j++) {
+                int offset = j - start;
                 int temp = matrix[start][j];
-                matrix[start][j] = matrix[end - j][start];
-                matrix[end - j][start] = matrix[end][end - j];
-                matrix[end][end - j] = matrix[j][end];
+                matrix[start][j] = matrix[end - offset][start];
+                matrix[end - offset][start] = matrix[end][end - offset];
+                matrix[end][end - offset] = matrix[j][end];
                 matrix[j][end] = temp;
             }
         }
     }
-
+    
     public static void main(String[] args) {
     }
 }

@@ -24,6 +24,7 @@ public class DivideTwoIntegers {
             long temp = b;
             int multi = 1;
             while (a >= temp) {
+                System.out.println(a + " = " + a + " - " + temp);
                 count += multi;
                 a -= temp;
                 temp += temp;
@@ -56,6 +57,6 @@ public class DivideTwoIntegers {
     }
 
     public static void main(String[] args) {
-        System.out.println(divide(-1, 1));
+        System.out.println(divide(100, 5));
     }
 }
