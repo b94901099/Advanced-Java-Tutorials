@@ -13,6 +13,62 @@ package String;
 import java.util.*;
 
 public class MinimumWindowSubstring {
+
+    public String minWindow3(String S, String T) {
+        if (S == null || T == null || S.length() == 0 || T.length() == 0) {
+            return "";
+        }
+        HashMap<Character, Integer> demand = new HashMap<Character, Integer>();
+        for (int i = 0; i < T.length(); i++) {
+            if (demand.containsKey(T.charAt(i))) {
+                demand.put(T.charAt(i), demand.get(T.charAt(i)) + 1);
+            } else {
+                demand.put(T.charAt(i), 1);
+            }
+        }
+
+        int count = 0;  // 若 count == T.length() 則需求已滿足, 可以開始收縮 leftBound
+        int leftBound = 0;
+        String result = "";
+        int minLen = S.length() + 1;
+        HashMap<Character, Integer> supply = new HashMap<Character, Integer>();
+
+        for (int i = 0; i < S.length(); i++) {
+            char cur = S.charAt(i);
+            if (!demand.containsKey(cur)) {
+                continue;
+            }
+
+            if (supply.containsKey(cur)) {
+                supply.put(cur, supply.get(cur) + 1);
+            } else {
+                supply.put(cur, 1);
+            }
+
+            if (supply.get(cur) <= demand.get(cur)) {
+                count++;
+            }
+
+            while (count == T.length()) {
+                char leftChar = S.charAt(leftBound);
+                if (supply.containsKey(leftChar)) {
+                    if (supply.get(leftChar) > demand.get(leftChar)) {
+                        supply.put(leftChar, supply.get(leftChar) - 1);
+                    } else {
+                        supply.put(leftChar, supply.get(leftChar) - 1);
+                        count--;
+                        if (i - leftBound + 1 < minLen) {
+                            minLen = i - leftBound + 1;
+                            result = S.substring(leftBound, i + 1);
+                        }
+                    }
+                }
+                leftBound++;
+            }
+        }
+        return result;
+    }
+
     /*
      * 这道题是字符串处理的题目，和Substring with Concatenation of All Words思路非常类似，同样是建立一个字典，
      * 然后维护一个窗口。区别是在这道题目中，因为可以跳过没在字典里面的字符（也就是这个串不需要包含且仅仅包含字典里面的字符
@@ -22,7 +78,6 @@ public class MinimumWindowSubstring {
      * 然后遇到字典中字符时就将对应字符的数量减一。算法的时间复杂度是O(n),其中n是字符串的长度，
      * 因为每个字符再维护窗口的过程中不会被访问多于两次。空间复杂度则是O(字典的大小)，也就是代码中T的长度。
      */
-
     public String minWindow(String S, String T) {
         if (S == null || T == null || S.length() == 0 || T.length() == 0) {
             return "";
@@ -130,6 +185,14 @@ public class MinimumWindowSubstring {
     }
 
     public static void main(String[] args) {
+        String S = "ADOBECODEBANC";
+        String T = "ABC";
+        MinimumWindowSubstring m = new MinimumWindowSubstring();
+        System.out.println(m.minWindow(S, T));
+        System.out.println(m.minWindow2(S, T));
+        System.out.println(m.minWindow3(S, T));
+        System.out.println(m.minWindowTest(S, T));
+
     }
 
     public String minWindowTest(String S, String T) {

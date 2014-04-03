@@ -32,7 +32,7 @@ public class WildcardMatching {
         int i = 0, j = 0;
         int star = -1;
 
-        while (i < s.length()) {
+        while (i < s.length() && j < p.length()) {
             char charS = s.charAt(i);
             char charP = p.charAt(j);
 
@@ -64,7 +64,7 @@ public class WildcardMatching {
 
     public static void main(String[] args) {
         WildcardMatching w = new WildcardMatching();
-        System.out.println(w.isMatch2("aaa", "*?"));
+        //System.out.println(w.isMatch2("aaa", "*?"));
         System.out.println(w.isMatch2("aa", "a"));
     }
 }

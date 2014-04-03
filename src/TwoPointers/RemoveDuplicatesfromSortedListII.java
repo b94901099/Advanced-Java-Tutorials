@@ -5,11 +5,6 @@
  * Given 1->1->1->2->3, return 2->3.
  */
 package TwoPointers;
-
-/**
- *
- * @author Chen
- */
 public class RemoveDuplicatesfromSortedListII {
     
     public ListNode deleteDuplicates(ListNode head) {

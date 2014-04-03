@@ -32,40 +32,40 @@ public class SubstringＷithConcatenationＯfAllWords {
             return result;
         }
 
-        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        HashMap<String, Integer> demand = new HashMap<String, Integer>();
         for (int i = 0; i < L.length; i++) {
-            if (map.containsKey(L[i])) {
-                map.put(L[i], map.get(L[i]) + 1);
+            if (demand.containsKey(L[i])) {
+                demand.put(L[i], demand.get(L[i]) + 1);
             } else {
-                map.put(L[i], 1);
+                demand.put(L[i], 1);
             }
         }
         // 把所需出現的字和其次數紀錄下來
 
         for (int i = 0; i < L[0].length(); i++) { // for loop 以 0,3,6; 1,4,7; 2,5,8 的方式 go through S
-            HashMap<String, Integer> curMap = new HashMap<String, Integer>();
+            HashMap<String, Integer> supply = new HashMap<String, Integer>();
             int count = 0;
             int left = i;
             for (int j = i; j <= S.length() - L[0].length(); j += L[0].length()) {
                 String str = S.substring(j, j + L[0].length());
-                if (!map.containsKey(str)) { // 若此字並非在所需之中, 則left bound 往下一個字跳, 之前累積的都清除, 因為不能有任何 intervene
-                    curMap.clear();
+                if (!demand.containsKey(str)) { // 若此字並非在所需之中, 則left bound 往下一個字跳, 之前累積的都清除, 因為不能有任何 intervene
+                    supply.clear();
                     count = 0;
                     left = j + L[0].length();
                 } else { // 若此字在所需之中, 則須判斷需求是否恰好滿足
-                    if (curMap.containsKey(str)) {
-                        curMap.put(str, curMap.get(str) + 1);
+                    if (supply.containsKey(str)) {
+                        supply.put(str, supply.get(str) + 1);
                     } else {
-                        curMap.put(str, 1);
-                    } // 先把字加進 curMap
+                        supply.put(str, 1);
+                    } // 先把字加進 supply
 
-                    if (curMap.get(str) <= map.get(str)) { // 若尚未或恰好能滿足需求, 則 count++
+                    if (supply.get(str) <= demand.get(str)) { // 若尚未或恰好能滿足需求, 則 count++
                         count++;
                     } else { // 若是供給過剩, 則開始縮減 left bound
-                        while (curMap.get(str) > map.get(str)) {
+                        while (supply.get(str) > demand.get(str)) {
                             String temp = S.substring(left, left + L[0].length());
-                            curMap.put(temp, curMap.get(temp) - 1); // 無須判斷 curMap.containsKey, 因為只有符合需求的字才會被加進來
-                            if (curMap.get(temp) < map.get(temp)) { // 若刪除此字會使影響需求
+                            supply.put(temp, supply.get(temp) - 1); // 無須判斷 curMap.containsKey, 因為只有符合需求的字才會被加進來
+                            if (supply.get(temp) < demand.get(temp)) { // 若刪除此字會使影響需求
                                 count--;
                             }
                             left = left + L[0].length();
@@ -75,7 +75,7 @@ public class SubstringＷithConcatenationＯfAllWords {
                     if (count == L.length) { // 若 L 中每個字的需求都被恰好滿足, 則紀錄下此 left, 並繼續往前
                         result.add(left);
                         String temp = S.substring(left, left + L[0].length());
-                        curMap.put(temp, curMap.get(temp) - 1);
+                        supply.put(temp, supply.get(temp) - 1);
                         left = left + L[0].length();
                         count--;
                     }

@@ -14,7 +14,6 @@ import java.util.Arrays;
 public class MultiplyStrings {
 
     public static String multiply(String num1, String num2) {
-
         String n1 = new StringBuilder(num1).reverse().toString();
         String n2 = new StringBuilder(num2).reverse().toString();
 

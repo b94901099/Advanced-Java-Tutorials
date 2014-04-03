@@ -1,23 +1,45 @@
+/*
+ * Given a sorted linked list, delete all duplicates such that each element appear only once.
+ * For example,
+ * Given 1->1->2, return 1->2.
+ * Given 1->1->2->3->3, return 1->2->3.
+ */
 package TwoPointers;
 
 public class RemoveDuplicatesFromLinkedList {
+
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode pre = head;
-        ListNode cur = head.next;
-        while (cur != null) {
-            if (cur.val == pre.val) {
-                cur = cur.next;
-                pre.next = null;
+
+        ListNode cur = head;
+        while (cur != null && cur.next != null) {
+            if (cur.val == cur.next.val) {
+                cur.next = cur.next.next;
             } else {
-                pre.next = cur;
-                pre = cur;
                 cur = cur.next;
             }
         }
 
+        return head;
+    }
+
+    public ListNode deleteDuplicates3(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode cur = head;
+
+        while (cur.next != null) {
+            if (cur.val == cur.next.val) {
+                do {
+                    cur.next = cur.next.next;
+                } while (cur.next != null && cur.next.val == cur.val);
+            } else {
+                cur = cur.next;
+            }
+        }
         return head;
     }
 
@@ -50,6 +72,4 @@ public class RemoveDuplicatesFromLinkedList {
 
     public static void main(String[] args) {
     }
-
-    
 }
