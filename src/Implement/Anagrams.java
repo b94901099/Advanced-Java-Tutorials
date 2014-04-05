@@ -1,9 +1,6 @@
 package Implement;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Anagrams {
 
@@ -19,7 +16,7 @@ public class Anagrams {
             char[] tmp = strs[i].toCharArray();
             Arrays.sort(tmp);
             String sorted = new String(tmp);
-            if (map.get(sorted) == null) {
+            if (!map.containsKey(sorted)) {
                 ArrayList<String> list = new ArrayList<String>();
                 list.add(strs[i]);
                 map.put(sorted, list);

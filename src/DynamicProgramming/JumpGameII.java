@@ -20,47 +20,51 @@ public class JumpGameII {
             return 0;
         }
         int lastReach = 0;
-        int reach = 0;
+        int maxReach = 0;
         int step = 0;
-        for (int i = 0; i <= reach && i < A.length; i++) {
+        for (int i = 0; i <= maxReach && i < A.length; i++) {
             if (i > lastReach) {
                 step++;
-                lastReach = reach;
+                lastReach = maxReach;
             }
-            reach = Math.max(reach, A[i] + i);
+            maxReach = Math.max(maxReach, A[i] + i);
         }
-        if (reach < A.length - 1) {
+        if (maxReach < A.length - 1) {
             return 0;
         }
         return step;
     }
 
+    
+    //雖然 AC, 但是到不了終點時會產生無限循環
     public static int jumpGreedy(int[] A) {
 
         int n = A.length;
-        int maxRange = 0, tempRange = 0, stepNum = 0;
+        int maxx = 0, temp = 0, num = 0;
         for (int i = 0; i < n;) {
-            if (tempRange >= n - 1) {
+            if (temp >= n - 1) {
                 break;
             }
-            while (i <= tempRange) {
-                maxRange = Math.max(maxRange, i + A[i]);
+            while (i <= temp) {
+                maxx = Math.max(maxx, i + A[i]);
                 ++i;
             }
-            stepNum++;
-            tempRange = maxRange;
+            num++;
+            temp = maxx;
         }
-        return stepNum;
-
+        return num;
     }
 
     public static void main(String[] args) {
+        JumpGameII j = new JumpGameII();
         int[] A = {3, 0, 1, 0, 4};
-        System.out.println(jumpGreedy(A));
+//        System.out.println(jumpGreedy(A));
+        System.out.println(j.jump(A));
         int[] A1 = {1, 2, 1, 1, 1};
         System.out.println(jumpGreedy(A1));
+        System.out.println(j.jump(A1));
         int[] A2 = {7, 0, 9, 6, 9, 6, 1, 7, 9, 0, 1, 2, 9, 0, 3};
         System.out.println(jumpGreedy(A2));
-
+        System.out.println(j.jump(A2));
     }
 }
