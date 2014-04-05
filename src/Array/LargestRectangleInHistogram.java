@@ -26,7 +26,7 @@ package Array;
  * 3) If the stack is not empty, then one by one remove all bars from stack and do step 2.b for every removed bar.
  */
 
-import java.util.Stack;
+import java.util.*;
 
 public class LargestRectangleInHistogram {
 

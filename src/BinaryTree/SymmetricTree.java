@@ -34,18 +34,23 @@ public class SymmetricTree {
         while (!left.isEmpty() && !right.isEmpty()) {
             TreeNode temp1 = left.poll();
             TreeNode temp2 = right.poll();
-            if (temp1 == null && temp2 != null || temp1 != null && temp2 == null) {
+
+            if (temp1 == null && temp2 == null) {
+                continue;
+            }
+
+            if (temp1 == null || temp2 == null) {
                 return false;
             }
-            if (temp1 != null && temp2 != null) {
-                if (temp1.val != temp2.val) {
-                    return false;
-                }
-                left.offer(temp1.left);
-                left.offer(temp1.right);
-                right.offer(temp2.right);
-                right.offer(temp2.left);
+            
+            if (temp1.val != temp2.val) {
+                return false;
             }
+            
+            left.offer(temp1.left);
+            left.offer(temp1.right);
+            right.offer(temp2.right);
+            right.offer(temp2.left);
         }
         return true;
     }

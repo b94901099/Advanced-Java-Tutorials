@@ -62,7 +62,7 @@ public class Q2 {
 
         Node(int id) {
             this.id = id;
-            this.children = new ArrayList<>();
+            this.children = new ArrayList<Node>();
         }
 
         @Override

@@ -106,5 +106,10 @@ public class InterleavingString {
     }
 
     public static void main(String[] args) {
+        String s1 = "abc";
+        String s2 = "ade";
+        String s3 = "aabdec";
+        InterleavingString i = new InterleavingString();
+        System.out.println(i.isInterleaveDP(s1, s2, s3));
     }
 }

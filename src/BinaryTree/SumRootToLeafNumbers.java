@@ -9,6 +9,8 @@
  * The root-to-leaf path 1->2 represents the number 12.
  * The root-to-leaf path 1->3 represents the number 13.
  * Return the sum = 12 + 13 = 25.
+ * 
+ * 兩種做法: 1. 算數字, 到leaf直接加總  2. 算數字, 到leaf紀錄該數字, 得到所有數字後加總
  */
 package BinaryTree;
 
@@ -39,8 +41,6 @@ public class SumRootToLeafNumbers {
         findAllNumbers(root.left, nums, tmp * 10 + root.val);
         findAllNumbers(root.right, nums, tmp * 10 + root.val);
     }
-    
-    
     //sol 2, 求數字算總合一起進行
     int sum2;
 
@@ -67,7 +67,7 @@ public class SumRootToLeafNumbers {
     }
 
     // 以下為 Sol 1
-    public int sumNumbers(TreeNode root) {
+    public int sumNumbers1(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -81,14 +81,13 @@ public class SumRootToLeafNumbers {
         if (root == null) {
             return 0;
         }
-        sum = sum * 10 + root.val;
 
         if (root.left == null && root.right == null) {
-            return sum;
+            return sum * 10 + root.val;
         }
 
-        int sumLeft = sumHelper(root.left, sum);
-        int sumRight = sumHelper(root.right, sum);
+        int sumLeft = sumHelper(root.left, sum * 10 + root.val);
+        int sumRight = sumHelper(root.right, sum * 10 + root.val);
         return sumLeft + sumRight;
     }
 
@@ -103,7 +102,7 @@ public class SumRootToLeafNumbers {
         n1.right = n3;
         n2.left = n4;
         n3.right = n5;
-        System.out.println(s.sumNumbers(n1));
+        System.out.println(s.sumNumbers1(n1));
         System.out.println(s.sumNumbers2(n1));
         System.out.println(s.sumNumbers3(n1));
     }

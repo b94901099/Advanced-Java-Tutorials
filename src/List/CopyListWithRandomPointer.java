@@ -6,13 +6,15 @@
  */
 package List;
 
+import java.util.*;
+
 public class CopyListWithRandomPointer {
 
     public static RandomListNode copyRandomList(RandomListNode head) {
         if (head == null) {
             return null;
         }
-        
+
         // copy next
         RandomListNode cur = head;
         while (cur != null) {
@@ -83,16 +85,6 @@ public class CopyListWithRandomPointer {
         return splitList(head);
     }
 
-    private static class RandomListNode {
-
-        int label;
-        RandomListNode next, random;
-
-        RandomListNode(int x) {
-            this.label = x;
-        }
-    };
-
     public static void main(String[] args) {
         RandomListNode head = new RandomListNode(1);
         RandomListNode n2 = new RandomListNode(2);
@@ -103,10 +95,62 @@ public class CopyListWithRandomPointer {
         n3.next = n4;
         head.random = n3;
         n2.random = n4;
-        RandomListNode ret = copyRandomList(head);
+        RandomListNode ret = copyRandomList3(head);
         while (ret != null) {
             System.out.println(ret.label);
             ret = ret.next;
+        }
+    }
+
+    //有bug
+    
+    public static RandomListNode copyRandomList3(RandomListNode head) {
+        if (head == null) {
+            return null;
+        }
+        HashMap<RandomListNode, RandomListNode> map = new HashMap<RandomListNode, RandomListNode>();
+        RandomListNode headClone = new RandomListNode(head.label);
+        map.put(head, headClone);
+        RandomListNode cur = head;
+        while (cur != null) {
+            RandomListNode curClone = map.get(cur);
+            RandomListNode curNext = cur.next;
+            if (map.containsKey(curNext)) {
+                curClone.next = map.get(curNext);
+            } else {
+                if (cur.next != null) {
+                    RandomListNode curNextClone = new RandomListNode(curNext.label);
+                    map.put(curNext, curNextClone);
+                    curClone.next = curNextClone;
+                }
+            }
+
+            RandomListNode curRandom = cur.random;
+            if (map.containsKey(curRandom)) {
+                curClone.random = map.get(curRandom);
+            } else {
+                if (cur.random == null) {
+                    curClone.random = null;
+                } else {
+                    RandomListNode curRandomClone = new RandomListNode(curRandom.label);
+                    map.put(curNext, curRandomClone);
+                    curClone.next = curRandomClone;
+                }
+            }
+
+            cur = cur.next;
+        }
+
+        return headClone;
+    }
+
+    private static class RandomListNode {
+
+        int label;
+        RandomListNode next, random;
+
+        RandomListNode(int x) {
+            this.label = x;
         }
     }
 }

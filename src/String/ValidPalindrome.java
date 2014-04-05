@@ -17,13 +17,7 @@ public class ValidPalindrome {
 
     //删除非字母非数字的字符过滤字符串
     private String filter(String s) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < s.length(); i++) {
-            if (Character.isLetterOrDigit(s.charAt(i))) {
-                sb.append(s.charAt(i));
-            }
-        }
-        return sb.toString();
+        return s.replaceAll("[^a-z0-9]", "");
     }
 
     private String reverse(String s) {
@@ -32,5 +26,6 @@ public class ValidPalindrome {
     }
 
     public static void main(String[] args) {
+        ValidPalindrome v = new ValidPalindrome();
     }
 }

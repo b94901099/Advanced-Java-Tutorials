@@ -21,9 +21,10 @@ public class BinaryTreeInorderTraversal {
                 tmpStack.push(current);
                 current = current.left;
             }
-            if (tmpStack.empty()) {
+
+            if (tmpStack.empty())
                 return result;
-            }
+
             current = tmpStack.pop();
             result.add(current.val);
             current = current.right;
