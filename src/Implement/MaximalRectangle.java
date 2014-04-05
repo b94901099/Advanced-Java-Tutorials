@@ -22,7 +22,7 @@ public class MaximalRectangle {
         if (matrix == null || matrix.length < 1 || matrix[0].length < 1) {
             return 0;
         }
-        int[] height = new int[matrix[0].length + 1];
+        int[] height = new int[matrix[0].length];
         int max_area = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
@@ -32,25 +32,40 @@ public class MaximalRectangle {
                     height[j] = 0;
                 }
             }
-            max_area = Math.max(max_area, maxHistogram(height));
+            max_area = Math.max(max_area, largestRectangleArea(height));
         }
         return max_area;
     }
 
-    int maxHistogram(int[] height) {
-        int ans = 0;
-        Stack<Integer> stk = new Stack<Integer>();
+    public int largestRectangleArea(int[] height) {
+        int ret = 0;
 
-        for (int i = 0; i < height.length;) {
-            if (stk.empty() || height[stk.peek()] < height[i]) {
-                stk.push(i++);
+        if (height == null) {
+            return 0;
+        }
+
+        Stack<Integer> stack = new Stack<Integer>();
+        int N = height.length;
+        for (int i = 0; i < N; ++i) {
+            if (stack.isEmpty() || height[stack.peek()] <= height[i]) {
+                stack.push(i);
             } else {
-                int idx = stk.peek();
-                stk.pop();
-                ans = Math.max(ans, (stk.empty() ? i : i - stk.peek() - 1) * height[idx]);
+                int index = stack.pop();
+                int area = height[index]
+                        * (stack.isEmpty() ? i : i - stack.peek() - 1);
+                ret = Math.max(ret, area);
+                --i;
             }
         }
-        return ans;
+
+        while (!stack.isEmpty()) {
+            int index = stack.pop();
+            int area = height[index]
+                    * (stack.isEmpty() ? N : N - stack.peek() - 1);
+            ret = Math.max(ret, area);
+        }
+
+        return ret;
     }
 
     //sol 1
