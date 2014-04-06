@@ -13,15 +13,12 @@ public class ThreeSumClosest {
         }
 
         Arrays.sort(num);
-        int closest = 0;
-        boolean needInital = true;
+        int closest = num[0] + num[1] + num[num.length - 1];
+
         for (int i = 0; i < num.length - 2; i++) {
             int p = i + 1;
             int q = num.length - 1;
-            if(needInital){
-                closest = num[i] + num[p] + num[q];
-                needInital = false;
-            }
+
             while (p < q) {
                 int sum = num[i] + num[p] + num[q];
                 if (sum == target) {

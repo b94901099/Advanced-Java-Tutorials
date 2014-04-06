@@ -6,8 +6,6 @@
  */
 package TwoPointers;
 
-import java.util.Arrays;
-
 public class RemoveDupicatesFromSortedArray {
 
     public int removeDuplicates(int[] A) {
@@ -28,9 +26,26 @@ public class RemoveDupicatesFromSortedArray {
         return i + 1;
     }
 
+    public int removeDuplicates2(int[] A) {
+        if (A.length < 2) {
+            return A.length;
+        }
+
+        int left = 0;
+        for (int i = 1; i < A.length; i++) {
+            if (A[i] == A[left]) {
+                A[++left] = A[i];
+            }
+        }
+
+        return left + 1;
+    }
+
     public static void main(String[] args) {
         RemoveDupicatesFromSortedArray r = new RemoveDupicatesFromSortedArray();
         int[] A = {1, 1, 2};
         System.out.println(r.removeDuplicates(A));
+        int[] B = {1, 1, 2};
+        System.out.println(r.removeDuplicates2(B));
     }
 }

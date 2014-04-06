@@ -19,5 +19,9 @@ public class RemoveElement {
     }
 
     public static void main(String[] args) {
+        RemoveElement r = new RemoveElement();
+        int[] test = {3, 1, 1, 2, 1, 3, 1};
+        System.out.println(r.removeElement(test, test.length, 1));
     }
+
 }
