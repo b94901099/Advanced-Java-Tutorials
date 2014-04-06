@@ -21,13 +21,13 @@ public class Candy {
                 candies[i] = candies[i - 1] + 1;
             }
         }
-        
+
         for (int i = ratings.length - 2; i >= 0; i--) {
-            if (ratings[i] > ratings[i + 1] && candies[i] <= candies[i + 1]){
+            if (ratings[i] > ratings[i + 1] && candies[i] <= candies[i + 1]) {
                 candies[i] = candies[i + 1] + 1;
             }
         }
-        
+
         int total = 0;
         for (int i = 0; i < ratings.length; i++) {
             total += candies[i];
@@ -39,5 +39,7 @@ public class Candy {
         int[] ratings = {1, 2, 2};
         Candy c = new Candy();
         System.out.println(c.candy(ratings));
+        int[] ratings2 = {3, 6, 4, 7, 4, 1, 1, 2, 2};
+        System.out.println(c.candy(ratings2));
     }
 }
