@@ -22,7 +22,7 @@ public class Candy {
             }
         }
 
-        for (int i = ratings.length - 2; i >= 0; i--) {
+        for (int i = ratings.length - 2; i >= 0; i--) { // 注意糖果等於的時候也要考慮
             if (ratings[i] > ratings[i + 1] && candies[i] <= candies[i + 1]) {
                 candies[i] = candies[i + 1] + 1;
             }

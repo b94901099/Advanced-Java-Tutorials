@@ -6,38 +6,61 @@ import java.io.*;
 public class IS {
 
     public static void main(String[] args) {
-        ArrayList<String> country = new ArrayList<String>();
-        ArrayList<String> abr = new ArrayList<String>();
-
-        try {
-            String file = "D:\\CMU\\ISProject\\country.txt";
-            BufferedReader in = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = in.readLine()) != null) {
-                if (line.contains(";")) {
-                    abr = new ArrayList<String>(country);
-                    country.clear();
-                } else {
-                    country.add(line);
-                }
-            }
-            in.close();
-
-            System.out.println(abr);
-            System.out.println(country);
-
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < country.size(); i++) {
-                String template = "\t\t\tcase \"" + country.get(i) + "\":\n" + "\t\t\treturn \"" + abr.get(i) + "\";\n"
-                        + "\t\t\tbreak;\n";
-                sb.append(template);
-            }
-
-            FileWriter out = new FileWriter("D:\\CMU\\ISProject\\countryAbr.txt");
-            out.write(sb.toString());
-            out.close();
-        } catch (IOException ex) {
-            System.out.println("File Read Error: " + ex.getMessage());
+        String s = "Austria\n" +
+"Belgium\n" +
+"Bulgaria\n" +
+"Croatia\n" +
+"Cyprus\n" +
+"Czech Republic\n" +
+"Denmark\n" +
+"Estonia\n" +
+"Finland\n" +
+"France\n" +
+"Germany\n" +
+"Greece\n" +
+"Hungary\n" +
+"Ireland\n" +
+"Italy\n" +
+"Latvia\n" +
+"Lithuania\n" +
+"Luxembourg\n" +
+"Malta\n" +
+"Netherlands\n" +
+"Poland\n" +
+"Portugal\n" +
+"Romania\n" +
+"Slovakia\n" +
+"Slovenia\n" +
+"Spain\n" +
+"Sweden\n" +
+"United Kingdom";
+        String[] strs = s.split("\n");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < strs.length; i++) {
+            sb.append("\"" + strs[i] + "\", ");
         }
+        System.out.println(sb.toString());
+        
+//        try {
+//            String file = "D:\\CMU\\ISProject\\countrylist.txt";
+//            BufferedReader in = new BufferedReader(new FileReader(file));
+//            String line;
+//            StringBuilder result = new StringBuilder();
+//            
+//            while ((line = in.readLine()) != null) {
+//                String[] strs = line.split("\">");
+//                result.append("map.put(\"" + strs[0].trim() + "\", \"0\");\n");
+//            }
+//            in.close();
+//
+//            System.out.println(result.toString());
+
+//            FileWriter out1 = new FileWriter("D:\\CMU\\ISProject\\initiateWorldMap.txt");
+//            out1.write(result.toString());
+//            out1.close();
+            
+//        } catch (IOException ex) {
+//            System.out.println("File Read Error: " + ex.getMessage());
+//        }
     }
 }

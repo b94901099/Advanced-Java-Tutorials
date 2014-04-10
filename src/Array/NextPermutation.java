@@ -77,8 +77,6 @@ public class NextPermutation {
     }
 
     /**
-     * 有 bug
-     *
      * @param num
      */
     public void nextPermutation(int[] num) {
@@ -86,25 +84,22 @@ public class NextPermutation {
             return;
         }
 
-        int i = num.length - 2;
+        int i = num.length - 1;
 
-        while (i >= 0 && num[i] >= num[i + 1]) {
+        while (i > 0 && num[i - 1] >= num[i])
             i--;
-        }
 
-        if (i < 0) {
+        if (i == 0) {
             reverseArray(num, 0, num.length - 1);
             return;
         }
 
-        int j = i + 1;
-        while (j < num.length && num[j] > num[i]) {
-            j++;
-        }
-        j--;
+        int toSwapIndex = i - 1;
+        while (i < num.length && num[i] > num[toSwapIndex])
+            i++;
 
-        swap(num, i, j);
-        reverseArray(num, i + 1, num.length - 1);
+        swap(num, toSwapIndex, i - 1);
+        reverseArray(num, toSwapIndex + 1, num.length - 1);
     }
 
     private void swap(int[] num, int p, int q) {

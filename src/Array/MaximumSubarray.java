@@ -1,5 +1,10 @@
 package Array;
 /*
+ * Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
+
+For example, given the array [−2,1,−3,4,−1,2,1,−5,4],
+the contiguous subarray [4,−1,2,1] has the largest sum = 6.
+
  * 我们这么想，当我们从头到尾遍历这个数组的时候，对于一个数组里的数字，它有几种选择呢？
  * 它只有两种选择： 1. 加入之前的SubArray， 2. 自己另起一个SubArray
  * 好，那什么时候会出现这两种情况呢。

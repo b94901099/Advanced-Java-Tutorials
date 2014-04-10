@@ -43,7 +43,28 @@ public class FirstMissingPositive {
         int[] A1 = {3, 4, -1, 1};
         int[] A2 = {1, 2, 0};
 
+        System.out.println(f.firstMissingPositive2(A1));
+        System.out.println(f.firstMissingPositive2(A2));
+
         System.out.println(f.firstMissingPositive(A1));
         System.out.println(f.firstMissingPositive(A2));
     }
+
+    public int firstMissingPositive2(int[] A) {
+        boolean[] flags = new boolean[A.length];
+        for (int i = 0; i < A.length; i++) {
+            int index = A[i] - 1;
+            if (index >= 0 && index < A.length) {
+                flags[index] = true;
+            }
+        }
+
+        for (int i = 0; i < flags.length; i++) {
+            if (!flags[i]) {
+                return i + 1;
+            }
+        }
+        return A.length + 1; // 代表數字都沒有missing
+    }
+
 }
