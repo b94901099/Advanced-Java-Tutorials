@@ -23,10 +23,10 @@ public class UniqueBinarySearchTreesII {
     }
 
     public static ArrayList<TreeNode> dfs(int begin, int end) {
-        ArrayList<TreeNode> ret = new ArrayList<TreeNode>();
+        ArrayList<TreeNode> result = new ArrayList<TreeNode>();
         if (begin > end) {
-            ret.add(null);          // 相当于占位符  
-            return ret;
+            result.add(null);          // 相当于占位符
+            return result;
         }
 
         for (int i = begin; i <= end; i++) {
@@ -38,26 +38,13 @@ public class UniqueBinarySearchTreesII {
                     TreeNode root = new TreeNode(i + 1);      // root node, i+1 因为第一个从1而不是从0开始  
                     root.left = left.get(j);
                     root.right = right.get(k);
-                    ret.add(root);
+                    result.add(root);
                 }
             }
         }
-        return ret;
+        return result;
     }
 
     public static void main(String[] args) {
-    }
-
-    private static class TreeNode {
-
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-            left = null;
-            right = null;
-        }
     }
 }

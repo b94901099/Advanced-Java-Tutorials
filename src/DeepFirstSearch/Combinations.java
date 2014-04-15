@@ -38,8 +38,30 @@ public class Combinations {
         }
     }
 
+    public ArrayList<ArrayList<Integer>> combine2(int n, int k) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        combineHelper2(n, k, result, list, 0);
+        return result;
+    }
+
+
+
+    private void combineHelper2(int n, int k, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list, int pos) {
+        if (list.size() == k) {
+            result.add(new ArrayList(list));
+            return;
+        }
+        for (int i = pos + 1; i <= n; i++) {
+            list.add(i);
+            combineHelper2(n, k, result, list, i);
+            list.remove(list.size() - 1);
+        }
+    }
+
+
     public static void main(String[] args) {
         Combinations c = new Combinations();
-        System.out.println(c.combine(4, 2));
+        System.out.println(c.combine2(4, 2));
     }
 }

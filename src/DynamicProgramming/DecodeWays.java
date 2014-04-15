@@ -51,7 +51,40 @@ public class DecodeWays {
         return c - '0' > 0;
     }
 
-    
+    public int numDecodingsDP2(String s) {
+        if (s == null || s.length() < 1) {
+            return 0;
+        }
+
+        int[] count = new int[s.length()];
+
+
+        if (isValid(s.charAt(0)))
+            count[0] = 1;
+        else
+            count[0] = 0;
+
+        if (s.length() == 1) return count[0];
+
+        if (isValid(s.charAt(1)))
+            count[1] = count[0];
+
+        if (isValid(s.substring(0, 2)))
+            count[1] += 1;
+
+        for (int i = 2; i < s.length(); i++) {
+            if (isValid(s.charAt(i))) {
+                count[i] = count[i - 1];
+            }
+            if (isValid(s.substring(i - 1, i + 1))) {
+                count[i] += count[i - 2];
+            }
+        }
+
+        return count[s.length() - 1];
+    }
+
+
     // DFS sol, time exceeds
     int count;
 
@@ -89,5 +122,6 @@ public class DecodeWays {
         DecodeWays d = new DecodeWays();
         System.out.println(d.numDecodingsDFS("15234"));
         System.out.println(d.numDecodingsDP("1212"));
+        System.out.println(d.numDecodingsDP2("1212"));
     }
 }

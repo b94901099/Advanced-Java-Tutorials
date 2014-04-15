@@ -19,16 +19,36 @@
  */
 package BinaryTree;
 
-/**
- *
- * @author Chen
- */
-public class PopulatingNextRightPointersinEachNodeII {
+import java.util.LinkedList;
+import java.util.Queue;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class PopulatingNextRightPointersinEachNodeII {
+    public void connect(TreeLinkNode root) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeLinkNode> queue = new LinkedList<TreeLinkNode>();
+
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            TreeLinkNode cur = queue.poll();
+
+            for (int i = 0; i < size; i++) {
+                cur.next = i < (size - 1) ? queue.peek() : null;
+                if (cur.left != null) queue.offer(cur.left);
+                if (cur.right != null) queue.offer(cur.right);
+                cur = cur.next;
+            }
+        }
     }
+
+    private static class TreeLinkNode {
+
+        TreeLinkNode left;
+        TreeLinkNode right;
+        TreeLinkNode next;
+    }
+
 }

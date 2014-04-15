@@ -41,6 +41,26 @@ public class PalindromePartitioningII {
         return count[0] - 1;
     }
 
+    public int minCut4(String s) {
+        if (s == null || s.length() <= 1) {
+            return 0;
+        }
+        table(s);
+        int[] count = new int[s.length()];
+        count[s.length() - 1] = 0;
+
+        for (int i = s.length() - 2; i >= 0; i--) {
+            count[i] = Integer.MAX_VALUE;
+            for (int j = i; j < s.length(); j++) {
+                if (table[i][j]) {
+                    count[i] = Math.min(count[i], 1 + (j + 1 == s.length() ? 0 : count[j + 1]));
+                }
+            }
+        }
+        return count[0] - 1;
+    }
+
+
     private void table(String s) {
         table = new boolean[s.length()][s.length()];
         for (int i = 0; i < s.length(); i++) {

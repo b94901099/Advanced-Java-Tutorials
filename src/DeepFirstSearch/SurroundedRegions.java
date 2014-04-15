@@ -128,6 +128,7 @@ public class SurroundedRegions {
                 stj.offer(y + 1);
             }
         }
+
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (board[i][j] == 'O') {
@@ -140,6 +141,73 @@ public class SurroundedRegions {
         }
     }
 
+    public void solveBFSStack(char[][] board) {
+        int m = board.length;
+        if (m == 0) {
+            return;
+        }
+        int n = board[0].length;
+        Stack<Integer> sti = new Stack<Integer>();
+        Stack<Integer> stj = new Stack<Integer>();
+        for (int i = 0; i < m; i++) {
+            if (board[i][0] == 'O') {
+                sti.push(i);
+                stj.push(0);
+            }
+            if (board[i][n - 1] == 'O') {
+                sti.push(i);
+                stj.push(n - 1);
+
+            }
+        }
+        for (int j = 0; j < n; j++) {
+            if (board[0][j] == 'O') {
+                sti.push(0);
+                stj.push(j);
+            }
+            if (board[m - 1][j] == 'O') {
+                sti.push(m - 1);
+                stj.push(j);
+
+            }
+        }
+
+        while (!sti.isEmpty()) {
+            int x = sti.pop();
+            int y = stj.pop();
+            board[x][y] = 'P';
+
+            if (x - 1 >= 0 && board[x - 1][y] == 'O') {
+                sti.push(x - 1);
+                stj.push(y);
+            }
+            if (x + 1 < m && board[x + 1][y] == 'O') {
+                sti.push(x + 1);
+                stj.push(y);
+            }
+            if (y - 1 >= 0 && board[x][y - 1] == 'O') {
+                sti.push(x);
+                stj.push(y - 1);
+            }
+            if (y + 1 < n && board[x][y + 1] == 'O') {
+                sti.push(x);
+                stj.push(y + 1);
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 'O') {
+                    board[i][j] = 'X';
+                }
+                if (board[i][j] == 'P') {
+                    board[i][j] = 'O';
+                }
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         SurroundedRegions s = new SurroundedRegions();
         char[][] board = {{'X', 'X', 'X', 'X'}, {'X', 'O', 'O', 'X'}, {'X', 'X', 'O', 'X'}, {'X', 'O', 'X', 'X'}};
@@ -151,4 +219,5 @@ public class SurroundedRegions {
             System.out.println("");
         }
     }
+
 }

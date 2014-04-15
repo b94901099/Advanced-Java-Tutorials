@@ -15,12 +15,12 @@ public class Permutations {
         ArrayList<ArrayList<Integer>> result = new ArrayList();
         ArrayList<Integer> list = new ArrayList();
         HashSet<Integer> set = new HashSet();
-        permuteHelper(result, list, set, num, 0);
+        permuteHelper(result, list, set, num);
         return result;
     }
 
     private void permuteHelper(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list,
-            HashSet<Integer> set, int[] num, int pos) {
+            HashSet<Integer> set, int[] num) {
         if (list.size() == num.length) {
             result.add(new ArrayList(list));
             return;
@@ -32,7 +32,7 @@ public class Permutations {
             }
             list.add(num[i]);
             set.add(num[i]);
-            permuteHelper(result, list, set, num, i + 1);
+            permuteHelper(result, list, set, num);
             list.remove(list.size() - 1);
             set.remove(num[i]);
         }
@@ -43,11 +43,7 @@ public class Permutations {
         Permutations p = new Permutations();
         ArrayList<ArrayList<Integer>> result = p.permute(ia);
         for (ArrayList<Integer> list : result) {
-            System.out.print("{");
-            for (Integer in : list) {
-                System.out.print(in + ", ");
-            }
-            System.out.println("}");
+            System.out.println(list);
         }
     }
 }

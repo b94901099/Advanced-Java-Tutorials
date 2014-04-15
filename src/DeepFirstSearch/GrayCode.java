@@ -22,6 +22,7 @@ public class GrayCode {
     public ArrayList<Integer> grayCode2(int n) {
         ArrayList<Integer> results = new ArrayList<Integer>();
         int N = 1 << n;
+        System.out.println("N: " + N);
         for (int i = 0; i < N; ++i) {
             results.add((i >> 1) ^ i);
         }

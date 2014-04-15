@@ -65,8 +65,44 @@ public class DistinctSubsequences {
 
         return nums[T.length()][S.length()];
     }
-    
-     public int numDistinctRecursion(String S, String T) {  
+
+
+    public static int numDistinctDP2(String S, String T) {
+        if (S == null || S.length() == 0 || T == null && T.length() == 0) {
+            return 0;
+        }
+
+        if (S.length() < T.length()) {
+            return 0;
+        }
+
+        int[][] counts = new int[T.length()][S.length()];
+
+        if (S.charAt(0) == T.charAt(0))
+            counts[0][0] = 1;
+
+        for (int j = 1; j < S.length(); j++) {
+            counts[0][j] = counts[0][j - 1];
+            if (T.charAt(0) == S.charAt(j))
+                counts[0][j] += 1;
+        }
+
+        for (int i = 1; i < T.length(); i++) {
+            counts[i][0] = 0;
+        }
+
+        for (int i = 1; i < T.length(); i++) {
+            for (int j = 1; j < S.length(); j++) {
+                counts[i][j] = counts[i][j - 1];
+                if (T.charAt(i) == S.charAt(j))
+                    counts[i][j] += counts[i-1][j-1];
+            }
+        }
+
+        return counts[T.length() - 1][S.length() - 1];
+    }
+
+    public int numDistinctRecursion(String S, String T) {
         if (T.length()==0) return 1;  
         if (S.length()==0) return 0;  
         if (T.length()>S.length()) return 0;  
@@ -79,5 +115,6 @@ public class DistinctSubsequences {
         String S = "ACCCE";
         String T = "ACE";
         System.out.println(numDistinct(S, T));
+        System.out.println(numDistinctDP2(S, T));
     }
 }

@@ -49,12 +49,8 @@ public class PopulatingNextRightPointersinEachNode {
                     cur.next = queue.peek();
                 }
 
-                if (cur.left != null) {
-                    queue.offer(cur.left);
-                }
-                if (cur.right != null) {
-                    queue.offer(cur.right);
-                }
+                if (cur.left != null) queue.offer(cur.left);
+                if (cur.right != null) queue.offer(cur.right);
             }
         }
     }

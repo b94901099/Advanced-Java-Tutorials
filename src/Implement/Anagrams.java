@@ -1,3 +1,8 @@
+/**
+ * Given an array of strings, return all groups of strings that are anagrams.
+ * Note: All inputs will be in lower-case.
+ */
+
 package Implement;
 
 import java.util.*;
@@ -24,6 +29,7 @@ public class Anagrams {
                 map.get(sorted).add(strs[i]);
             }
         }
+
         ArrayList<String> result = new ArrayList<String>();
         for (ArrayList<String> tmplist : map.values()) {
             if (tmplist.size() > 1) {

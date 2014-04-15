@@ -36,18 +36,18 @@ class LetterCombinationOfAPhoneNumberSol2 {
         map.put('8', new char[]{'t', 'u', 'v'});
         map.put('9', new char[]{'w', 'x', 'y', 'z'});
 
-        combineHelper(map, digits, "", result, 0);
+        combineHelper(map, digits, "", result);
         return result;
     }
 
-    private void combineHelper(Map<Character, char[]> map, String digits, String tmp, ArrayList<String> result, int pos) {
+    private void combineHelper(Map<Character, char[]> map, String digits, String tmp, ArrayList<String> result) {
         if (tmp.length() == digits.length()) {
             result.add(tmp);
             return;
         }
 
-        for (int j = 0; j < map.get(digits.charAt(pos)).length; j++) {
-            combineHelper(map, digits, tmp + map.get(digits.charAt(pos))[j], result, pos + 1);
+        for (int j = 0; j < map.get(digits.charAt(0)).length; j++) {
+            combineHelper(map, digits, tmp + map.get(digits.charAt(0))[j], result);
         }
     }
 }

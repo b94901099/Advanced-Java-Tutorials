@@ -7,8 +7,7 @@
  */
 package DeepFirstSearch;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class Subsets {
 
@@ -29,8 +28,8 @@ public class Subsets {
             System.out.println("list.add" + num[i]);
             subsetsHelper(result, list, num, i + 1);
             System.out.println("Helper(" + result.size() + ", " + list.size() + ", " + num.length + ", " + (i + 1));
-            list.remove(list.size() - 1);
             System.out.println("list.remove(" + (list.size() - 1) + ")");
+            list.remove(list.size() - 1);
         }
     }
 

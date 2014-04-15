@@ -77,5 +77,9 @@ public class SymmetricTree {
     }
 
     public static void main(String[] args) {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(null);
+        queue.offer(null);
+        System.out.println(queue.size());
     }
 }

@@ -31,7 +31,7 @@ package DeepFirstSearch;
 import java.util.*;
 
 public class CombinationSum {
-    
+
     public ArrayList<ArrayList<Integer>> combinationSum_2(int[] candidates, int target) {
         Arrays.sort(candidates);
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
@@ -39,12 +39,11 @@ public class CombinationSum {
         helper(result, list, candidates, target, 0);
         return result;
     }
-    
+
     private void helper(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> list,
-            int[] candidates, int target, int pos) {
-        if (target < 0) {
-            return;
-        }
+                        int[] candidates, int target, int pos) {
+        if (target < 0) return;
+
         if (target == 0) {
             result.add(new ArrayList(list));
             return;
@@ -55,8 +54,8 @@ public class CombinationSum {
             list.remove(list.size() - 1);
         }
     }
-    
-    
+
+
     // sol2 一樣概念
     public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, int target) {
         Arrays.sort(candidates);
@@ -65,7 +64,7 @@ public class CombinationSum {
         combinationSum(candidates, target, 0, path, result);
         return result;
     }
-    
+
     private void combinationSum(int[] arr, int target, int start, Stack<Integer> path, ArrayList<ArrayList<Integer>> result) {
         if (target == 0) {
             ArrayList<Integer> list = new ArrayList<Integer>();
@@ -83,7 +82,7 @@ public class CombinationSum {
             path.pop();
         }
     }
-    
+
     public static void main(String[] args) {
         CombinationSum cs = new CombinationSum();
         int[] candidates = {2, 3, 6, 7};

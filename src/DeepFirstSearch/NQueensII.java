@@ -18,6 +18,7 @@ public class NQueensII {
     private void helper(int[] loc, int n, int pos) {
         if (pos == n) {
             totalNum++;
+            return;
         }
         for (int i = 0; i < n; i++) {
             loc[pos] = i;
@@ -36,5 +37,7 @@ public class NQueensII {
     }
     
     public static void main(String[] args) {
+        NQueensII n = new NQueensII();
+        System.out.println(n.totalNQueens(8));
     }
 }
