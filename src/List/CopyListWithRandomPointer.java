@@ -103,22 +103,26 @@ public class CopyListWithRandomPointer {
     }
 
     //有bug
-    
+
     public static RandomListNode copyRandomList3(RandomListNode head) {
         if (head == null) {
             return null;
         }
+
         HashMap<RandomListNode, RandomListNode> map = new HashMap<RandomListNode, RandomListNode>();
         RandomListNode headClone = new RandomListNode(head.label);
         map.put(head, headClone);
         RandomListNode cur = head;
+
         while (cur != null) {
             RandomListNode curClone = map.get(cur);
             RandomListNode curNext = cur.next;
-            if (map.containsKey(curNext)) {
-                curClone.next = map.get(curNext);
-            } else {
-                if (cur.next != null) {
+            if (cur.next == null)
+                curClone.next = null;
+            else {
+                if (map.containsKey(curNext)) {
+                    curClone.next = map.get(curNext);
+                } else {
                     RandomListNode curNextClone = new RandomListNode(curNext.label);
                     map.put(curNext, curNextClone);
                     curClone.next = curNextClone;
@@ -126,11 +130,11 @@ public class CopyListWithRandomPointer {
             }
 
             RandomListNode curRandom = cur.random;
-            if (map.containsKey(curRandom)) {
-                curClone.random = map.get(curRandom);
-            } else {
-                if (cur.random == null) {
-                    curClone.random = null;
+            if (cur.random == null)
+                curClone.random = null;
+            else {
+                if (map.containsKey(curRandom)) {
+                    curClone.random = map.get(curRandom);
                 } else {
                     RandomListNode curRandomClone = new RandomListNode(curRandom.label);
                     map.put(curNext, curRandomClone);

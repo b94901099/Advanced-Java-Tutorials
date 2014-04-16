@@ -13,8 +13,12 @@ import java.util.*;
  * the slots on the right. For the last line of text, it should be left
  * justified and no extra space is inserted between words. For example, words:
  * ["This", "is", "an", "example", "of", "text", "justification."] L: 16. Return
- * the formatted lines as: [ "This is an", "example of text", "justification. "
- * ] Note: Each word is guaranteed not to exceed L in length.
+ * the formatted lines as:
+ */
+//"This    is    an",
+// "example  of text",
+// "justification.  "
+/*  Note: Each word is guaranteed not to exceed L in length.
  */
 public class TextJustification {
 
@@ -161,9 +165,79 @@ public class TextJustification {
         return result;
     }
 
+
+    /**
+     * 還是有bug...
+     * @param words
+     * @param L
+     * @return
+     */
+    public ArrayList<String> fullJustify3(String[] words, int L) {
+        ArrayList<String> result = new ArrayList<String>();
+
+        int wordsIndex = 0;
+
+        while (wordsIndex < words.length) {
+            int strLength = 0;
+            int leftIndex = wordsIndex;
+
+            while (wordsIndex < words.length && (strLength + words[wordsIndex].length() <= L)) {
+                strLength = strLength + words[wordsIndex].length();
+                strLength = strLength == L ? strLength : strLength + 1;
+                wordsIndex++;
+            }
+
+            int wordNum = wordsIndex - leftIndex;
+
+            StringBuilder line = new StringBuilder();
+            if (wordNum == 1) {
+                line.append(words[leftIndex]);
+                for (int i = 0; i < L - words[leftIndex].length(); i++) {
+                    line.append(" ");
+                }
+                result.add(line.toString());
+                continue;
+            }
+
+            int letterLength = 0;
+
+            for (int i = leftIndex; i < wordsIndex; i++) {
+                letterLength += words[i].length();
+            }
+
+            int spaceTotal = L - letterLength;
+            int spaceSlot = wordsIndex - leftIndex - 1;
+            int aveSpace = spaceTotal / spaceSlot;
+            int[] spaceSlotNum = new int[spaceSlot];
+
+            for (int i = spaceSlot - 1; i >= 0; i--) {
+                spaceSlotNum[i] = aveSpace;
+                spaceTotal -= aveSpace;
+            }
+
+            if (spaceTotal > 0)
+                spaceSlotNum[0] = spaceSlotNum[0] + spaceTotal;
+
+            for (int i = leftIndex; i < wordsIndex; i++) {
+                line.append(words[i]);
+                if (i - leftIndex < spaceSlot) {
+                    for (int j = 0; j < spaceSlotNum[i]; j++) {
+                        line.append(" ");
+                    }
+                }
+            }
+
+            result.add(line.toString());
+        }
+
+
+        return result;
+    }
+
+
     public static void main(String[] args) {
         String[] test = {"This", "is", "an", "example", "of", "text", "justification."};
         TextJustification t = new TextJustification();
-        System.out.println(t.fullJustify(test, 16));
+        System.out.println(t.fullJustify3(test, 16));
     }
 }

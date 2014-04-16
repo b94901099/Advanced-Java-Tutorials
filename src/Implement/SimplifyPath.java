@@ -38,12 +38,12 @@ public class SimplifyPath {
         if (stack.isEmpty()) {
             stack.push("");
         }
-        StringBuilder ret = new StringBuilder();
+        StringBuilder result = new StringBuilder();
         while (!stack.isEmpty()) {
-            ret.insert(0, "/" + stack.pop());
+            result.insert(0, "/" + stack.pop());
         }
 
-        return ret.toString();
+        return result.toString();
     }
 
     public static void main(String[] args) {

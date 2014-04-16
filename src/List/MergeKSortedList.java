@@ -6,12 +6,6 @@ public class MergeKSortedList {
 
     private Comparator<ListNode> ListNodeComparator = new Comparator<ListNode>() {
         public int compare(ListNode left, ListNode right) {
-            if (left == null) {
-                return 1;
-            }
-            if (right == null) {
-                return -1;
-            }
             return left.val - right.val;
         }
     };
