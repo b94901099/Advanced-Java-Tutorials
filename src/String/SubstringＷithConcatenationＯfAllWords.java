@@ -1,14 +1,15 @@
-/*
+package String;
+
+/**
  * You are given a string, S, and a list of words, L, that are all of the same length.
- * Find all starting indices of substring(s) in S that is a concatenation of each word in L exactly once 
+ * Find all starting indices of substring(s) in S that is a concatenation of each word in L exactly once
  * and without any intervening characters.
  * For example, given:
  * S: "barfoothefoobarman"
  * L: ["foo", "bar"]
  * You should return the indices: [0,9].
  * (order does not matter).
- * 
- * 
+ *
  * 这道题看似比较复杂，其实思路和Longest Substring Without Repeating Characters差不多。
  * 因为那些单词是定长的，所以本质上和单一个字符一样。和Longest Substring Without Repeating Characters的区别
  * 只在于我们需要维护一个字典，然后保证目前的串包含字典里面的单词有且仅有一次。
@@ -19,8 +20,8 @@
  * (每个单词不会被访问多于两次，一次是窗口右端，一次是窗口左端)，
  * 总共扫描l次（i=0, ..., l-1)，所以总复杂度是O(2*n/l*l)=O(n)，是一个线性算法。
  * 空间复杂度是字典的大小，即O(m*l)，其中m是字典的单词数量。
+ *
  */
-package String;
 
 import java.util.*;
 
@@ -87,5 +88,7 @@ public class SubstringＷithConcatenationＯfAllWords {
     }
 
     public static void main(String[] args) {
+        String test = "kabeawa?n?sr? iqtwwb' rqhxmhrv? ktxrw!tvb.";
+
     }
 }

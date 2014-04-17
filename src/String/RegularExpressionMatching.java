@@ -1,4 +1,6 @@
-/*
+package String;
+
+/**
  * Implement regular expression matching with support for '.' and '*'.
  * '.' Matches any single character.
  * '*' Matches zero or more of the preceding element.
@@ -14,7 +16,6 @@
  * isMatch("ab", ".*") → true
  * isMatch("aab", "c*a*b") → true
  */
-package String;
 
 public class RegularExpressionMatching {
 

@@ -1,20 +1,20 @@
-/*
- * Given a string s and a dictionary of words dict, determine if s can be 
+package String;
+/**
+ *  * Given a string s and a dictionary of words dict, determine if s can be
  * segmented into a space-separated sequence of one or more dictionary words.
  * For example, given
  * s = "leetcode",
  * dict = ["leet", "code"].
  * Return true because "leetcode" can be segmented as "leet code".
- * 
+ *
  * 这个题目比较一般，就是判断一个串是否能被分解成几个出现在词典中的词。这个dp的思想就很明显了。
  * 关键是子问题的想法，我写了三种，其实就是看子问题不同。
  * 如:leetcode 可以看为l,le,lee,leet,leetc,leeco,leetcod是否能够被词典中的词表示，然后加入e，
  * 判断如果某个前缀可以表示如:leet可以被词典中的词表示，那么就可以判断code是否出现在词典中。
  * （ie:如果lee能就判断tcode是否出现），这样就可以判断leetcode是否可以被词典中词表示了。
  * dp[i]=dp[j] && find(str(j,i)) 0=<j&&j<=i
- */
-package String;
 
+ */
 import DynamicProgramming.*;
 import java.util.*;
 

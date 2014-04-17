@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CCLeetcode.iml" filepath="$PROJECT_DIR$/CCLeetcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Design Partter - Observer/Design Partter - Observer.iml" filepath="$PROJECT_DIR$/Design Partter - Observer/Design Partter - Observer.iml" />
       <module fileurl="file://D:/CMU_DS_Eclipse_Kepler/DesignPattern_MVC/DesignPattern_MVC.iml" filepath="D:/CMU_DS_Eclipse_Kepler/DesignPattern_MVC/DesignPattern_MVC.iml" />
       <module fileurl="file://D:/CMU_DS_Eclipse_Kepler/DesignPatterns10 - Singleton/DesignPatterns10 - Singleton.iml" filepath="D:/CMU_DS_Eclipse_Kepler/DesignPatterns10 - Singleton/DesignPatterns10 - Singleton.iml" />
     </modules>
