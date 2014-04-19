@@ -2,19 +2,19 @@
  * Given a binary tree, return the bottom-up level order traversal of its nodes' values.
  * (ie, from left to right, level by level from leaf to root).
 
-For example:
-Given binary tree {3,9,20,#,#,15,7},
-    3
-   / \
-  9  20
-    /  \
-   15   7
-return its bottom-up level order traversal as:
-[
-  [15,7]
-  [9,20],
-  [3],
-]
+ For example:
+ Given binary tree {3,9,20,#,#,15,7},
+ 3
+ / \
+ 9  20
+ /  \
+ 15   7
+ return its bottom-up level order traversal as:
+ [
+ [15,7]
+ [9,20],
+ [3],
+ ]
  */
 package BinaryTree;
 
@@ -27,7 +27,7 @@ public class BinaryTreeLevelOrderTraversalII {
         if (root == null) {
             return result;
         }
-        Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
@@ -46,5 +46,4 @@ public class BinaryTreeLevelOrderTraversalII {
         }
         return result;
     }
-
 }
