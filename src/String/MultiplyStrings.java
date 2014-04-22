@@ -34,7 +34,7 @@ public class MultiplyStrings {
             sb.insert(0, digit);
         }
 
-        while (sb.charAt(0) == '0' && sb.length() > 0) {
+        while (sb.charAt(0) == '0' && sb.length() > 1) {
             sb.deleteCharAt(0);
         }
         return sb.toString();
