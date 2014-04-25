@@ -1,10 +1,12 @@
-/*
+package List;
+
+/**
  * A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
  * Return a deep copy of the list.
  * http://blog.csdn.net/fightforyourdream/article/details/16879561
  * http://www.cnblogs.com/lautsie/p/3259724.html
+ *
  */
-package List;
 
 import java.util.*;
 
@@ -102,7 +104,6 @@ public class CopyListWithRandomPointer {
         }
     }
 
-    //有bug
 
     public static RandomListNode copyRandomList3(RandomListNode head) {
         if (head == null) {
@@ -137,8 +138,8 @@ public class CopyListWithRandomPointer {
                     curClone.random = map.get(curRandom);
                 } else {
                     RandomListNode curRandomClone = new RandomListNode(curRandom.label);
-                    map.put(curNext, curRandomClone);
-                    curClone.next = curRandomClone;
+                    map.put(curRandom, curRandomClone);
+                    curClone.random = curRandomClone;
                 }
             }
 

@@ -1,11 +1,13 @@
-/*
- * There are two sorted arrays A and B of size m and n respectively.
- * Find the median of the two sorted arrays. 
- * The overall run time complexity should be O(log (m+n)).
- * 
- * 同時也是另一題: "找到兩個 sorted array 中的第 k 個數"
- */
 package Array;
+
+/**
+ * There are two sorted arrays A and B of size m and n respectively.
+ * Find the median of the two sorted arrays.
+ * The overall run time complexity should be O(log (m+n)).
+ *
+ * 同時也是另一題: "找到兩個 sorted array 中的第 k 個數"
+ *
+ */
 
 public class MedianofTwoSortedArrays {
 

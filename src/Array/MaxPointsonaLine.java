@@ -1,4 +1,6 @@
-/*
+package Array;
+
+/**
  * Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
  *
  * 这道题属于计算几何的题目，要求给定一个点集合，是求出最多点通过一条直线的数量。
@@ -9,8 +11,8 @@
  * 因为下面我们要跳过重复的点（否则两个重合点会认为任何点都在他们构成的直线上），但是偏偏当所有点都重合时，
  * 我们需要返回所有点。除了这种情况，只要有一个点不重合，我们就会从那个点得到结果，这是属于比较tricky的情况。
  * 计算几何的题目在现在的面试中挺常见的，可能因为有些问题比较实用的缘故，而且实现中一般细节比较多，容易出bug，所以还是得重视。
+ *
  */
-package Array;
 
 import java.util.*;
 
