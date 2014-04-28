@@ -30,6 +30,7 @@ public class FindBadVersion {
         }
         int start = 2;
         int end = n;
+
         while (start + 1 < n) {
             int mid = start + (end - start) / 2;
             if (isBadVersion(mid) && !isBadVersion(mid - 1)) {
@@ -40,12 +41,13 @@ public class FindBadVersion {
                 start = mid;
             }
         }
-        if(isBadVersion(start) && !isBadVersion(start - 1)){
+
+        if(isBadVersion(start) && !isBadVersion(start - 1))
             return start;
-        }
-        if(isBadVersion(end) && !isBadVersion(start)){
+
+        if(isBadVersion(end) && !isBadVersion(start))
             return end;
-        }
+
         return -1;
     }
 

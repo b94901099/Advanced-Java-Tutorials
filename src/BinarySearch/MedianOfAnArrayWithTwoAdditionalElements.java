@@ -1,7 +1,8 @@
-/*
+package BinarySearch;
+
+/**
  *  Find the median of n+2 elements: n elements from sorted array a, in addition to 2 new elements e1, e2.
  */
-package BinarySearch;
 
 public class MedianOfAnArrayWithTwoAdditionalElements {
 

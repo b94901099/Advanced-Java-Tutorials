@@ -1,12 +1,13 @@
-/*
+package BinarySearch;
+
+/**
  * http://decomplexify.blogspot.com/
- * 
+ *
  * 給定一個 Array 和額外 elements, 找到median
  * Find the median of n+1 elements: n elements from sorted array a, in addition to a new element e.
- * 
+ *
  * 注意: 運用 helper method 控制返回 index, 避免 insertion
  */
-package BinarySearch;
 
 public class MedianOfAnArrayWithOneAdditionalElement {
 

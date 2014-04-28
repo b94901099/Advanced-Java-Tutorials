@@ -1,9 +1,10 @@
-/*
+package BinarySearch;
+
+/**
  *查找峰值。假设有一个数组,相邻两数都不相等，且A[0]<A[1], A[length-2] > A[length-1] 。
  * 如果A[i] > A[i-1] && A[i] > A[i+1]，那么认为A[i]是一个峰值。
  * 数组中可能存在多个峰值。给定A，找到任意一个峰值。
  */
-package BinarySearch;
 
 public class FindPeak {
 

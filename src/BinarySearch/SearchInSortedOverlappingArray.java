@@ -1,10 +1,11 @@
-/*
+package BinarySearch;
+
+/**
  * 有一类数组，例如数组[1,2,3,4,6,8,9,4,8,11,18,19,100] 前半部分是是一个递增数组，后面一个还是递增数组，
  * 但整个数组不是递增数组，那么怎么最快的找出其中一个数？
  * 分析：此题数组不是严格递增的数据，因为有重复的元素。对数组的前半部分和后半部分分别进行二分查找。
+ *
  */
-package BinarySearch;
-
 import java.util.*;
 
 public class SearchInSortedOverlappingArray {
