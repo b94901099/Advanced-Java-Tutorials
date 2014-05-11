@@ -38,9 +38,7 @@ public class BinaryTreeInorderTraversal {
     }
 
     private void inOrderTraversalHelper(TreeNode node, ArrayList<Integer> list) {
-        if (node == null) {
-            return;
-        }
+        if (node == null) return;
         inOrderTraversalHelper(node.left, list);
         list.add(node.val);
         inOrderTraversalHelper(node.right, list);
