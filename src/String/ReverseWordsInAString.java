@@ -13,7 +13,47 @@ import java.util.*;
 
 public class ReverseWordsInAString {
 
+    /**
+     * 反轉每個字, 再反轉整個String, 算法巧妙, 但碰到空格不會過
+     * @param s
+     * @return
+     */
     public static String reverseWords(String s) {
+        if (s.length() < 2)
+            return s;
+
+        char[] arr = s.toCharArray();
+        int left = 0;
+        int count = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == ' ' && count != 0) {
+                swap(arr, left, i - 1);
+                left = i + 1;
+                count = 0;
+            } else {
+                count++;
+            }
+        }
+
+        swap(arr, 0, arr.length - 1);
+        return new String(arr);
+    }
+
+
+    private static void swap(char[] arr, int p, int q) {
+        while (p < q) {
+            char c = arr[p];
+            arr[p] = arr[q];
+            arr[q] = c;
+            p++;
+            q--;
+        }
+    }
+
+
+
+    public static String reverseWords2(String s) {
         int i = 0;
         StringBuilder result = new StringBuilder();
         while (i < s.length()) {
